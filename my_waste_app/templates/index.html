@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <header class="text-center mb-5">
+        <h1 class="display-4">Waste Segregation Assistant</h1>
+        <p class="lead">Upload or capture an image to identify the correct waste bin</p>
+    </header>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="image-upload-container text-center p-4">
+                        <div class="preview-container mb-4">
+                            <img id="preview" class="img-fluid d-none" alt="Preview">
+                            <div id="placeholder" class="upload-placeholder">
+                                <i class="fas fa-camera fa-3x mb-3"></i>
+                                <p>Click to capture or upload an image</p>
+                            </div>
+                        </div>
+                        
+                        <input type="file" id="imageInput" class="d-none" accept="image/*" capture="environment">
+                        <button class="btn btn-primary me-2" onclick="document.getElementById('imageInput').click()">
+                            <i class="fas fa-upload me-2"></i>Upload Image
+                        </button>
+                        <button class="btn btn-secondary" id="captureBtn">
+                            <i class="fas fa-camera me-2"></i>Capture Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result" class="card mt-4 d-none">
+                <div class="card-body text-center">
+                    <h3 class="result-title mb-4">Classification Result</h3>
+                    <div class="bin-indicator mb-4">
+                        <div id="binColor" class="bin-color-circle"></div>
+                        <h4 id="binType" class="mt-3"></h4>
+                    </div>
+                    <p id="confidence" class="text-muted"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
